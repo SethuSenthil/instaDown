@@ -7,7 +7,7 @@ const express = require("express"),
       util = require('util'),
       aes256 = require("aes256"),
       readFile = util.promisify(fs.readFile),
-      const port = process.env.PORT || 3221;
+      port = process.env.PORT || 3221;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
