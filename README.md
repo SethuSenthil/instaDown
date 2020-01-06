@@ -9,10 +9,9 @@ If you know what your doing don't follow these steps lol! These are for the aver
 #### Important security info
 If your using someone elses server make sure you trust them.
 Your PASSWORD IS NOT STORED ON THE SERVER. However you authentication cookies are, to make the process speedy.
-When the password is sent to the server, it uses AES256 bit encryption (aka military grade encryption).
 
-###  Option 1
-Use the server provided on the shortcut. This requires no setup.
+###  Option 1 [Probably the best method for normal people]
+Use the server provided on the shortcut. This requires no setup!
 
 ### Option 2 [YOUR COMPUTER WILL ALWAYS NEED TO BE ON ]
 Step 1) [Install Node JS (doesn't really matter what version)](https://nodejs.org/en/)
@@ -37,12 +36,8 @@ Step 6) Change the URL in the shortcut
 
 ## Setting up the iOS shortcut
 Step 1) Make up a key. This is your password into thr server. We recommend you DO NOT make this the same as your instagram password or username.
-More info: This key is then used to encrypt your password
-
-Step 2) Go to https://instacrypto.glitch.me/THE-KEY-YOU-MADE-UP-FROM_STEP-1/YOUR-INSTAGRAM-PASSWORD
-Step 3) Copy the blob of text that it returns and paste that in for the "password" in the dictionary
 Step 4) Enter in your Instagram username where it says "username" in the dictionary
-Step 5) Enter the key you made up in the first step where it says "key"
+Step 5) Enter a random catchphrase or word inside "key" in the dictionary
 
 How to use:
 Step 1) Pull up an Instagram post, any inst post.

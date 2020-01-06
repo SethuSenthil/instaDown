@@ -5,9 +5,9 @@ const express = require("express"),
       bodyParser = require('body-parser'),
       fs = require('fs'),
       util = require('util'),
-      aes256 = require("aes256"),
       readFile = util.promisify(fs.readFile),
-      port = process.env.PORT || 3221;
+      port = process.env.PORT || 3221,
+      delay = require('await-delay');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +29,6 @@ app.post("/api/", function(req, res) {
         let posturl = req.body.url
         let password = req.body.password
         let key = req.body.key
-        let decryptedPassword = aes256.decrypt(key, password);
         let username = req.body.username
         let cookiePath = __dirname + `/auth/${username}.${key}.txt`
 
@@ -38,16 +37,15 @@ app.post("/api/", function(req, res) {
           page2 = page
           let cookies;
           let data = await readFile(cookiePath)
-          let decryptedData = aes256.decrypt(key, password);
-           cookies =  JSON.parse(decryptedData, null, 2)
+           cookies =  JSON.parse(data, null, 2)
          await page.setCookie(...cookies);
         }else{
           await page.goto('https://www.instagram.com/accounts/login/');
           await page.waitForSelector('input[name="username"]');
           await page.type('input[name="username"]', `${username}`);
-          await page.type('input[name="password"]',`${decryptedPassword}`);
+          await page.type('input[name="password"]',`${password}`);
           await page.click('button[type="submit"]');
-          await page.waitForSelector('div[role="presentation"]');
+          await delay(2000)
 
           //gets and saves auth cookies
           const authcookie = await page.cookies();
